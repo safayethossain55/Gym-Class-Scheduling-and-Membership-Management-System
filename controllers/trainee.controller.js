@@ -171,3 +171,50 @@ exports.logoutTrainee = (req, res) => {
         res.status(500).json({message: "Internal server error"});
     }
 };
+
+exports.updateTraineeProfile = async (req, res) => {
+  try {
+    const traineeId = req.user.id;
+    const { name, email, oldPassword, newPassword } = req.body;
+
+    const trainee = await User.findById(traineeId);
+    if (!trainee) return res.status(404).json({ message: 'Trainee not found' });
+
+    if (email && email !== trainee.email) {
+      const emailExists = await User.findOne({ email });
+      if (emailExists) {
+        return res.status(400).json({ message: 'Email already in use by another user' });
+      }
+      trainee.email = email;
+    }
+
+    if (name) trainee.name = name;
+
+    if (newPassword) {
+      if (!oldPassword) {
+        return res.status(400).json({ message: 'Old password is required to set a new password' });
+      }
+      const isMatch = await bcrypt.compare(oldPassword, trainee.password);
+      if (!isMatch) {
+        return res.status(400).json({ message: 'Old password is incorrect' });
+      }
+
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      trainee.password = hashedPassword;
+    }
+
+    await trainee.save();
+
+    res.status(200).json({
+      message: 'Profile updated successfully',
+      trainee: {
+        id: trainee._id,
+        name: trainee.name,
+        email: trainee.email,
+        role: trainee.role,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

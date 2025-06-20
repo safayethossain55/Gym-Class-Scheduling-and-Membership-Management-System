@@ -11,7 +11,7 @@ module.exports = (allowedRoles) => {
         return res.status(403).json({ message: 'Forbidden: Access denied for your role' });
       }
 
-      next(); // Role is allowed → proceed
+      next(); 
     } catch (error) {
       res.status(500).json({ message: 'Server error in role check' });
     }

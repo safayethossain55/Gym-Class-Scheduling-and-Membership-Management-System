@@ -7,7 +7,8 @@ const {
     bookClass,
     viewTodayBookings,
     cancelBooking,
-    logoutTrainee
+    logoutTrainee, 
+    updateTraineeProfile
 } = require("../controllers/trainee.controller");
 
 const auth = require("../middlewares/auth.middleware.js");
@@ -21,5 +22,6 @@ router.post('/book/:scheduleId', auth, allowRoles(['trainee']), bookClass);
 router.get('/my-today-schedules', auth, allowRoles(['trainee']), viewTodayBookings);
 router.delete('/cancelSchedule/:scheduleId', auth, allowRoles(['trainee']), cancelBooking);
 router.post("/logoutTrainee", auth, allowRoles(['trainee']), logoutTrainee);
+router.post("/updateTrainee", auth, allowRoles(['trainee']), updateTraineeProfile);
 
 module.exports = router;
