@@ -140,19 +140,16 @@ exports.cancelBooking = async (req, res) => {
     const traineeId = req.user.id;
     const scheduleId = req.params.scheduleId;
 
-    // 1. Find the class schedule
     const schedule = await ClassSchedule.findById(scheduleId);
     if (!schedule) {
       return res.status(404).json({ message: 'Class schedule not found' });
     }
 
-    // 2. Check if trainee is already booked
     const isBooked = schedule.trainees.includes(traineeId);
     if (!isBooked) {
       return res.status(400).json({ message: 'You are not booked for this class' });
     }
 
-    // 3. Remove trainee from the list
     schedule.trainees = schedule.trainees.filter(id => id.toString() !== traineeId);
 
     await schedule.save();
