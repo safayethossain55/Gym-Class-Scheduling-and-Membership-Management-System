@@ -53,7 +53,7 @@ This project is a role-based gym management system designed to streamline daily 
 }
 
 ## Admin Credentials
-Email: hossainSafayet@gmail.com  
+Email: admin@gmail.com  
 Password: 123456
 Role: admin
 
@@ -66,7 +66,7 @@ Role: admin
 - JWT_SECRET=your_jwt_secret
 - MONGODB_URI=mongodb://localhost:27017/gymManagement
 - **Start the Server:**
-npm start
+- npm start
 
 
 
