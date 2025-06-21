@@ -41,6 +41,8 @@ This project is a role-based gym management system designed to streamline daily 
   email: { type: String, unique: true },
   password: String,
   role: { type: String, enum: ['admin', 'trainer', 'trainee'] },
+  phone,
+  address,
   timestamps
 }
 - **classschedules**
