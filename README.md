@@ -67,37 +67,8 @@ Role: admin
 - MONGODB_URI=mongodb://localhost:27017/gymManagement
 - **Start the Server:**
 - npm start
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-To start the application on our local server, simply run this command using the VS Code command line (or any command line).
-
-```bash
-# Create Virtual Environment:
-# --------------------------------
-python -m pip install virtualenv
-python -m venv venv
-venv\Scripts\activate
-
-# Now run the commands:
-# ---------------------
-pip install -r requirements.txt
-python manage.py makemigrations
-python manage.py migrate
-python manage.py createsuperuser
-python manage.py runserver
-
+## Postman documentation:
+- https://documenter.getpostman.com/view/40176177/2sB2xBDqBH
 
 
 
