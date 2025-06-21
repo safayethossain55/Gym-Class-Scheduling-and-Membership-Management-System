@@ -37,7 +37,7 @@ exports.loginAdmin = async (req, res) => {
 
 exports.registerTrainer = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, phone, address } = req.body;
 
     const existingUser = await User.findOne({ email });
     if (existingUser) return res.status(400).json({ message: 'Trainer already exists' });
@@ -48,6 +48,8 @@ exports.registerTrainer = async (req, res) => {
       name,
       email,
       password: hashedPassword,
+      phone,
+      address,
       role: 'trainer',
     });
 

@@ -26,6 +26,8 @@ exports.loginTrainer = async (req, res) => {
         name: trainer.name,
         email: trainer.email,
         role: trainer.role,
+        phone: trainer.phone,
+        address: trainer.address
       },
     });
   } catch (error) {

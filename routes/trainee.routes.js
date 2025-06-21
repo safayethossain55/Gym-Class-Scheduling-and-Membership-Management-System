@@ -22,6 +22,6 @@ router.post('/book/:scheduleId', auth, allowRoles(['trainee']), bookClass);
 router.get('/my-today-schedules', auth, allowRoles(['trainee']), viewTodayBookings);
 router.delete('/cancelSchedule/:scheduleId', auth, allowRoles(['trainee']), cancelBooking);
 router.post("/logoutTrainee", auth, allowRoles(['trainee']), logoutTrainee);
-router.post("/updateTrainee", auth, allowRoles(['trainee']), updateTraineeProfile);
+router.put("/updateTrainee", auth, allowRoles(['trainee']), updateTraineeProfile);
 
 module.exports = router;

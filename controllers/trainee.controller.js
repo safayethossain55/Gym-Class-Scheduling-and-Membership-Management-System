@@ -7,7 +7,7 @@ const momentTz = require('moment-timezone');
 
 exports.registerTrainee = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, phone, address } = req.body;
 
     const existingTrainee = await User.findOne({ email });
     if (existingTrainee) return res.status(400).json({ message: 'Trainee already exists' });
@@ -18,6 +18,8 @@ exports.registerTrainee = async (req, res) => {
       name,
       email,
       password: hashedPassword,
+      phone,
+      address,
       role: 'trainee',
     });
 
@@ -52,6 +54,8 @@ exports.loginTrainee = async (req, res) => {
         name: trainee.name,
         email: trainee.email,
         role: trainee.role,
+        phone: trainee.phone,
+        address: trainee.address
       },
     });
   } catch (error) {
