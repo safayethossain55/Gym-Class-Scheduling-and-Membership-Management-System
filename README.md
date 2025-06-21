@@ -6,6 +6,10 @@ This project is a role-based gym management system designed to streamline daily 
 - **Trainers can view their assigned class schedules but cannot create or modify them**
 - **Trainees can register, log in, book available classes (max 10 trainees per class), and cancel their bookings if needed.**
 
+## Relational DIagram
+![image](https://github.com/user-attachments/assets/df614ec3-c4b4-4a8c-8eb9-a36450ad044b)
+
+
 
 ## Technologies Used
 - **Programming Language:** JavaScript (Node.js)
